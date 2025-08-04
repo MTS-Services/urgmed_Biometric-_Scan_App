@@ -15,7 +15,7 @@ class LocationScreen extends StatelessWidget {
       appBar: customAppBar(),
       body: Stack(
         children: [
-          Padding(
+          SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,15 +27,15 @@ class LocationScreen extends StatelessWidget {
                   "Location Information",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
+                SizedBox(height: 420), // extra space to prevent overlap
               ],
             ),
           ),
-          // Fixed bottom sheet like container
           Positioned(
             left: 0,
             right: 0,
             bottom: 0,
-            height: 400, // fixed height as you used before
+            height: 400,
             child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
@@ -55,39 +55,47 @@ class LocationScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  SizedBox(height: 50,),
+             
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      LocationInfoCard(
-                        coordinates: "23.8103,90.4125",
-                        title: "Dhaka Location",
-                        icon: Icons.location_on_outlined,
-                        iconColor: Colors.blue,
+                      Expanded(
+                        child: LocationInfoCard(
+                          coordinates: "23.8103,90.4125",
+                          title: "Dhaka Location",
+                          icon: Icons.location_on_outlined,
+                          iconColor: Colors.blue,
+                        ),
                       ),
-                      LocationInfoCard(
-                        icon: Icons.check_circle_outline_outlined,
-                        coordinates: "23.8103,90.4125",
-                        title: "Dhaka Location",
-                        iconColor: Colors.green,
+                      Expanded(
+                        child: LocationInfoCard(
+                          icon: Icons.check_circle_outline_outlined,
+                          coordinates: "23.8103,90.4125",
+                          title: "Dhaka Location",
+                          iconColor: Colors.green,
+                        ),
                       )
                     ],
                   ),
-                  SizedBox(height: 10),
+              
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      LocationInfoCard(
-                        coordinates: "23.8103,90.4125",
-                        title: "Dhaka Location",
-                        icon: Icons.speed,
-                        iconColor: Colors.orange,
+                      Expanded(
+                        child: LocationInfoCard(
+                          coordinates: "23.8103,90.4125",
+                          title: "Dhaka Location",
+                          icon: Icons.speed,
+                          iconColor: Colors.orange,
+                        ),
                       ),
-                      LocationInfoCard(
-                        coordinates: "23.8103,90.4125",
-                        title: "Dhaka Location",
-                        icon: Icons.alarm_rounded,
-                        iconColor: Colors.grey,
+                      Expanded(
+                        child: LocationInfoCard(
+                          coordinates: "23.8103,90.4125",
+                          title: "Dhaka Location",
+                          icon: Icons.alarm_rounded,
+                          iconColor: Colors.grey,
+                        ),
                       )
                     ],
                   ),
@@ -97,6 +105,7 @@ class LocationScreen extends StatelessWidget {
           ),
         ],
       ),
+
     );
   }
 }

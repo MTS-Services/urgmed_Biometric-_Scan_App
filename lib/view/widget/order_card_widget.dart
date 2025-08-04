@@ -4,6 +4,7 @@ class OrderCard extends StatelessWidget {
   final String orderId;
   final String status;
   final Color statusColor;
+  final Color bgColor;
   final String customerName;
   final String address;
   final String createdDate;
@@ -17,7 +18,7 @@ class OrderCard extends StatelessWidget {
     required this.customerName,
     required this.address,
     required this.createdDate,
-    required this.onVerifyPressed,
+    required this.onVerifyPressed, required this.bgColor,
   });
 
   @override
@@ -41,14 +42,14 @@ class OrderCard extends StatelessWidget {
                   ),
                 ),
                 Chip(
-                  backgroundColor: statusColor.withOpacity(0.1),
+                  backgroundColor: statusColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide(color: statusColor),
                   ),
                   label: Text(
                     status,
-                    style: TextStyle(color: statusColor),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],
@@ -92,7 +93,7 @@ class OrderCard extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: statusColor,
+                  backgroundColor: bgColor,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),

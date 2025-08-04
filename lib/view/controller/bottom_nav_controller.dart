@@ -9,10 +9,10 @@ import '../screen/reports_screen.dart';
 
 class BottomNavController extends GetxController {
   var selectedIndex = 0.obs;
-  final List<Widget> pages = const [
+  final List<Widget> pages = [
     DashBordScreen(),
-    LocationScreen(),
-    ReportsScreen(),
+    const LocationScreen(),
+    const ReportsScreen(),
   ];
   void changeIndex(int index) {
     selectedIndex.value = index;
