@@ -1,8 +1,6 @@
 import 'package:chain_verify_tm/utils/asset_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../utils/app_colors.dart';
 import '../widget/custom_app_bar.dart';
 import '../widget/location_card_widget.dart';
 
@@ -16,8 +14,9 @@ class LocationScreen extends StatelessWidget {
       appBar: customAppBar(),
       body: Stack(
         children: [
-          SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
+          // Scrollable upper content
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -28,15 +27,17 @@ class LocationScreen extends StatelessWidget {
                   "Location Information",
                   style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 420.h), // space to prevent overlap
+                SizedBox(height: 370.h), // Adjusted to prevent overlap with bottom sheet
               ],
             ),
           ),
+
+          // Bottom sheet style container
           Positioned(
             left: 0,
             right: 0,
             bottom: 0,
-            height: 400.h,
+            height: 350.h,
             child: Container(
               padding: EdgeInsets.all(10.w),
               decoration: BoxDecoration(
@@ -50,12 +51,13 @@ class LocationScreen extends StatelessWidget {
                     color: Colors.grey.shade300,
                     blurRadius: 10.r,
                     spreadRadius: 2.r,
-                    offset: Offset(0, -3),
+                    offset: const Offset(0, -3),
                   )
                 ],
               ),
               child: Column(
                 children: [
+                  SizedBox(height: 20.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

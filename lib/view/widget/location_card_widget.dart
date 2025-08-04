@@ -32,11 +32,11 @@ class LocationInfoCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          SizedBox(height: 10.h),
+          SizedBox(height: 5.h),
           Card(
             elevation: 0.1,
             child: Container(
-              padding: EdgeInsets.all(30.w),
+              padding: EdgeInsets.all(20.w),
               decoration: BoxDecoration(
                 color: AppColors.lColor,
                 borderRadius: BorderRadius.circular(10.r),
