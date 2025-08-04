@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrderCard extends StatelessWidget {
   final String orderId;
@@ -18,7 +19,8 @@ class OrderCard extends StatelessWidget {
     required this.customerName,
     required this.address,
     required this.createdDate,
-    required this.onVerifyPressed, required this.bgColor,
+    required this.onVerifyPressed,
+    required this.bgColor,
   });
 
   @override
@@ -28,7 +30,7 @@ class OrderCard extends StatelessWidget {
       shadowColor: Colors.white70,
       color: Colors.white,
       child: Container(
-        margin: const EdgeInsets.all(15),
+        margin: EdgeInsets.all(15.w),
         child: Column(
           children: [
             Row(
@@ -36,71 +38,84 @@ class OrderCard extends StatelessWidget {
               children: [
                 Text(
                   "Order #$orderId",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 20.sp,
                   ),
                 ),
                 Chip(
                   backgroundColor: statusColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                     side: BorderSide(color: statusColor),
                   ),
                   label: Text(
                     status,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12.sp,
+                    ),
                   ),
                 ),
               ],
             ),
 
+            SizedBox(height: 5.h),
+
             ListTile(
-              leading: const Icon(Icons.person_outline, size: 30),
+              contentPadding: EdgeInsets.zero,
+              leading: Icon(Icons.person_outline, size: 30.sp),
               title: Text(
                 customerName,
-                style: const TextStyle(
-                  fontSize: 16,
+                style: TextStyle(
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
 
             ListTile(
-              leading: const Icon(Icons.location_on_outlined, size: 30),
+              contentPadding: EdgeInsets.zero,
+              leading: Icon(Icons.location_on_outlined, size: 30.sp),
               title: Text(
                 address,
-                style: const TextStyle(
-                  fontSize: 16,
+                style: TextStyle(
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
 
-            /// Created Date
             ListTile(
-              leading: const Icon(Icons.alarm_rounded, size: 30),
+              contentPadding: EdgeInsets.zero,
+              leading: Icon(Icons.alarm_rounded, size: 30.sp),
               title: Text(
                 "Created: $createdDate",
-                style: const TextStyle(
-                  fontSize: 16,
+                style: TextStyle(
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
+
+            SizedBox(height: 10.h),
 
             SizedBox(
               width: double.infinity,
+              height: 45.h,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: bgColor,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
                 ),
                 onPressed: onVerifyPressed,
-                child: const Text("Verify Pickup"),
+                child: Text(
+                  "Verify Pickup",
+                  style: TextStyle(fontSize: 14.sp),
+                ),
               ),
             ),
           ],

@@ -1,5 +1,6 @@
 import 'package:chain_verify_tm/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../services/searvice.dart';
@@ -18,7 +19,7 @@ class DashBordScreen extends StatelessWidget {
       backgroundColor: AppColors.themColor,
       appBar: customAppBar(),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,31 +51,29 @@ class DashBordScreen extends StatelessWidget {
               ],
             ),
 
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
 
-            const Text(
+            Text(
               "Active Deliveries",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
             ),
 
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
 
             Obx(() {
               bool isAuth = controller.isAuthenticated.value;
               return ListView.builder(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: 3,
                 itemBuilder: (context, index) {
                   return OrderCard(
                     orderId: "12345",
-                    status: isAuth?"Awaiting Pick Up":"pick up",
+                    status: isAuth ? "Awaiting Pick Up" : "Pick up",
                     statusColor: isAuth
                         ? AppColors.bColor2.withOpacity(0.5)
                         : AppColors.mainColor.withOpacity(0.7),
-                    bgColor: isAuth
-                        ? AppColors.bColor2
-                        : AppColors.mainColor,
+                    bgColor: isAuth ? AppColors.bColor2 : AppColors.mainColor,
                     customerName: "Cameron Williamson",
                     address: "3891 Ranch view Dr. Richardson, California",
                     createdDate: "18/8/2025",
@@ -85,8 +84,6 @@ class DashBordScreen extends StatelessWidget {
                 },
               );
             }),
-
-
           ],
         ),
       ),
@@ -107,7 +104,7 @@ class DashBordScreen extends StatelessWidget {
             String subText = "Place your finger on the scanner";
 
             if (isLoading) {
-              fingerprintBg = const Color(0xFFE3F2FD);
+              fingerprintBg = Color(0xFFE3F2FD);
             } else if (authSuccess == true) {
               fingerprintBg = Colors.green.shade100;
               iconData = Icons.check_circle_outline;
@@ -119,14 +116,14 @@ class DashBordScreen extends StatelessWidget {
               titleText = "Failed";
               subText = "Authentication failed. Try again.";
             } else {
-              fingerprintBg = const Color(0xFFE3F2FD);
+              fingerprintBg = Color(0xFFE3F2FD);
             }
 
             return AlertDialog(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(16.r),
               ),
-              contentPadding: const EdgeInsets.all(20),
+              contentPadding: EdgeInsets.all(20.w),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -162,50 +159,49 @@ class DashBordScreen extends StatelessWidget {
                         );
                       }
                     },
-                    iconSize: 80,
+                    iconSize: 80.w,
                     icon: CircleAvatar(
-                      radius: 40,
+                      radius: 40.r,
                       backgroundColor: fingerprintBg,
                       child: isLoading
-                          ? const CircularProgressIndicator()
+                          ? CircularProgressIndicator()
                           : Icon(
                         iconData,
-                        size: 50,
-                        color: (authSuccess == true)
+                        size: 50.sp,
+                        color: authSuccess == true
                             ? Colors.green
-                            : (authSuccess == false)
+                            : authSuccess == false
                             ? Colors.red
                             : Colors.blue,
                       ),
                     ),
                   ),
-
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   Text(
                     titleText,
-                    style: const TextStyle(
-                      fontSize: 22,
+                    style: TextStyle(
+                      fontSize: 22.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Text(subText),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey.shade700,
                         foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding: EdgeInsets.symmetric(vertical: 14.h),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                         ),
                       ),
                       onPressed: () {
                         Get.back();
                       },
-                      child: const Text("Cancel"),
+                      child: Text("Cancel"),
                     ),
                   ),
                 ],

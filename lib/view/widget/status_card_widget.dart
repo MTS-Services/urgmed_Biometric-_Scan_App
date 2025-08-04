@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StatusCard extends StatelessWidget {
   final IconData icon;
@@ -22,25 +23,29 @@ class StatusCard extends StatelessWidget {
       elevation: 0.1,
       shadowColor: Colors.white70,
       child: Container(
-        height: 100,
-        width: 111,
+        height: 100.h,
+        width: 100.w,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(10)
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: iconColor),
-            const SizedBox(height: 4),
+            Icon(icon, color: iconColor, size: 28.sp),
+            SizedBox(height: 4.h),
             Text(
               count,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 24,
+                fontSize: 24.sp,
               ),
             ),
-            Text(label),
+            Text(
+              label,
+              style: TextStyle(fontSize: 12.sp),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),

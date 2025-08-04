@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../controller/bottom_nav_controller.dart';
 
-
 class CustomBottomNavBar extends StatelessWidget {
-CustomBottomNavBar({super.key});
+  CustomBottomNavBar({super.key});
 
-final BottomNavController controller = Get.put(BottomNavController());
+  final BottomNavController controller = Get.put(BottomNavController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +19,29 @@ final BottomNavController controller = Get.put(BottomNavController());
           onTap: controller.changeIndex,
           selectedItemColor: Colors.blue,
           unselectedItemColor: Colors.grey,
-          items: const [
+          selectedFontSize: 14.sp,
+          unselectedFontSize: 12.sp,
+          iconSize: 24.sp,
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled),
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 4.h),
+                child: Icon(Icons.home_filled, size: 24.sp),
+              ),
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.location_on),
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 4.h),
+                child: Icon(Icons.location_on, size: 24.sp),
+              ),
               label: "View Tracking",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.file_copy),
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 4.h),
+                child: Icon(Icons.file_copy, size: 24.sp),
+              ),
               label: "Reports",
             ),
           ],

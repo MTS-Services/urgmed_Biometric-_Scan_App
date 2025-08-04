@@ -1,5 +1,6 @@
 import 'package:chain_verify_tm/utils/asset_path.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/app_colors.dart';
 import '../widget/custom_app_bar.dart';
@@ -16,18 +17,18 @@ class LocationScreen extends StatelessWidget {
       body: Stack(
         children: [
           SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Image.asset(AssetPath.mapImage),
-                SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 Text(
                   "Location Information",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 420), // extra space to prevent overlap
+                SizedBox(height: 420.h), // space to prevent overlap
               ],
             ),
           ),
@@ -35,27 +36,26 @@ class LocationScreen extends StatelessWidget {
             left: 0,
             right: 0,
             bottom: 0,
-            height: 400,
+            height: 400.h,
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10.w),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(20.r),
+                  topRight: Radius.circular(20.r),
                 ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.shade300,
-                    blurRadius: 10,
-                    spreadRadius: 2,
+                    blurRadius: 10.r,
+                    spreadRadius: 2.r,
                     offset: Offset(0, -3),
                   )
                 ],
               ),
               child: Column(
                 children: [
-             
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -67,6 +67,7 @@ class LocationScreen extends StatelessWidget {
                           iconColor: Colors.blue,
                         ),
                       ),
+                      SizedBox(width: 10.w),
                       Expanded(
                         child: LocationInfoCard(
                           icon: Icons.check_circle_outline_outlined,
@@ -77,7 +78,7 @@ class LocationScreen extends StatelessWidget {
                       )
                     ],
                   ),
-              
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -89,6 +90,7 @@ class LocationScreen extends StatelessWidget {
                           iconColor: Colors.orange,
                         ),
                       ),
+                      SizedBox(width: 10.w),
                       Expanded(
                         child: LocationInfoCard(
                           coordinates: "23.8103,90.4125",
@@ -105,7 +107,6 @@ class LocationScreen extends StatelessWidget {
           ),
         ],
       ),
-
     );
   }
 }
