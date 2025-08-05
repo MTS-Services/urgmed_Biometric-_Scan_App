@@ -15,6 +15,7 @@ class CustomBottomNavBar extends StatelessWidget {
       return Scaffold(
         body: controller.pages[controller.selectedIndex.value],
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
           currentIndex: controller.selectedIndex.value,
           onTap: controller.changeIndex,
           selectedItemColor: Colors.blue,
