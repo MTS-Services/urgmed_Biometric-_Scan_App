@@ -29,8 +29,8 @@ class OrderCard extends StatelessWidget {
       elevation: 0.1,
       shadowColor: Colors.white70,
       color: Colors.white,
-      child: Container(
-        margin: EdgeInsets.all(15.w),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             Row(
@@ -40,7 +40,7 @@ class OrderCard extends StatelessWidget {
                   "Order #$orderId",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
+                    fontSize: 16.sp,
                   ),
                 ),
                 Chip(
@@ -53,53 +53,47 @@ class OrderCard extends StatelessWidget {
                     status,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 12.sp,
+                      fontSize: 10.sp,
                     ),
                   ),
                 ),
               ],
             ),
-
             SizedBox(height: 5.h),
-
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: Icon(Icons.person_outline, size: 30.sp),
+              leading: Icon(Icons.person_outline, size: 27.sp),
               title: Text(
                 customerName,
                 style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
-
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: Icon(Icons.location_on_outlined, size: 30.sp),
+              leading: Icon(Icons.location_on_outlined, size: 27.sp),
               title: Text(
                 address,
                 style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
-
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: Icon(Icons.alarm_rounded, size: 30.sp),
+              leading: Icon(Icons.alarm_rounded, size: 27.sp),
               title: Text(
                 "Created: $createdDate",
                 style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
-
             SizedBox(height: 10.h),
-
             SizedBox(
               width: double.infinity,
               height: 45.h,

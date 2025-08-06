@@ -11,103 +11,67 @@ class LocationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: customAppBar(),
-      body: Stack(
-        children: [
-          // Scrollable upper content
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 20.h),
-                Image.asset(AssetPath.mapImage),
-                SizedBox(height: 15.h),
-                Text(
-                  "Location Information",
-                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 370.h), // Adjusted to prevent overlap with bottom sheet
-              ],
-            ),
-          ),
-
-          // Bottom sheet style container
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: 350.h,
-            child: Container(
-              padding: EdgeInsets.all(10.w),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.r),
-                  topRight: Radius.circular(20.r),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade300,
-                    blurRadius: 10.r,
-                    spreadRadius: 2.r,
-                    offset: const Offset(0, -3),
-                  )
-                ],
-              ),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: customAppBar()),
+            SliverToBoxAdapter(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: LocationInfoCard(
-                          coordinates: "23.8103,90.4125",
-                          title: "Dhaka Location",
-                          icon: Icons.location_on_outlined,
-                          iconColor: Colors.blue,
-                        ),
+                  Image.asset(AssetPath.mapImage),
+                  SizedBox(height: 15.h),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Location Information",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(width: 10.w),
-                      Expanded(
-                        child: LocationInfoCard(
-                          icon: Icons.check_circle_outline_outlined,
-                          coordinates: "23.8103,90.4125",
-                          title: "Dhaka Location",
-                          iconColor: Colors.green,
-                        ),
-                      )
-                    ],
+                    ),
                   ),
                   SizedBox(height: 10.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: LocationInfoCard(
-                          coordinates: "23.8103,90.4125",
-                          title: "Dhaka Location",
-                          icon: Icons.speed,
-                          iconColor: Colors.orange,
-                        ),
-                      ),
-                      SizedBox(width: 10.w),
-                      Expanded(
-                        child: LocationInfoCard(
-                          coordinates: "23.8103,90.4125",
-                          title: "Dhaka Location",
-                          icon: Icons.alarm_rounded,
-                          iconColor: Colors.grey,
-                        ),
-                      )
-                    ],
-                  ),
                 ],
               ),
             ),
-          ),
-        ],
+            SliverToBoxAdapter(
+              child: Container(
+                height: 30,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15.r),
+                    topRight: Radius.circular(15.r),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 2,
+                      offset: Offset(0, -2), // উপরের দিকে shadow ফেলবে
+                      spreadRadius: .2,
+                    ),
+                  ],
+                ),
+              ),
+
+            ),
+            SliverGrid.builder (
+              itemCount: 4,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemBuilder: (context, index) {
+                return LocationInfoCard(
+                  icon: Icons.location_on_outlined,
+                  iconColor: Colors.blue,
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -18,49 +18,32 @@ class LocationInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.white70,
-            blurRadius: 12.r,
-            spreadRadius: 12.r,
-            offset: Offset(2, 2),
-          )
-        ],
-      ),
-      child: Column(
-        children: [
-          SizedBox(height: 5.h),
-          Card(
-            elevation: 0.1,
-            child: Container(
-              padding: EdgeInsets.all(20.w),
-              decoration: BoxDecoration(
-                color: AppColors.lColor,
-                borderRadius: BorderRadius.circular(10.r),
+    return  Padding(
+      padding: const EdgeInsets.all(3),
+      child: Card(
+        color: AppColors.lColor,
+        elevation: 0.1,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            children: [
+              SizedBox(height: 10.h),
+              Icon(icon, color: iconColor, size: 28.sp),
+              SizedBox(height: 10.h),
+              Text(
+                title!,
+                style: TextStyle(fontSize: 15.sp),
+                textAlign: TextAlign.center,
               ),
-              child: Column(
-                children: [
-                  Icon(icon, color: iconColor, size: 28.sp),
-                  SizedBox(height: 10.h),
-                  Text(
-                    title!,
-                    style: TextStyle(fontSize: 16.sp),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 5.h),
-                  Text(
-                    coordinates,
-                    style: TextStyle(fontSize: 14.sp, color: Colors.black87),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+              SizedBox(height: 5.h),
+              Text(
+                coordinates,
+                style: TextStyle(fontSize: 13.sp, color: Colors.black87),
+                textAlign: TextAlign.center,
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
